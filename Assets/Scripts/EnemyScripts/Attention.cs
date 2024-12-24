@@ -21,26 +21,25 @@ public abstract class Attention : MonoBehaviour
 
     protected Player currentPlayer;
     protected Vector3 playerLastPos;
-    protected Vector3 playerDeltaPos;
 
     private void Update() {
         if (currentPlayer == null) {
             currentPlayer = FindObjectOfType<Player>();
-            playerLastPos = currentPlayer.transform.position;
-            Debug.Log("No player in scene");
+            if (currentPlayer == null) {
+                Debug.Log("No player in scene");
+            } else {
+                playerLastPos = currentPlayer.transform.position;
+                Debug.Log("Found Player on Scene");
+            }
             return;
-        } else {
-            playerDeltaPos = currentPlayer.transform.position - playerLastPos;
-            playerLastPos = currentPlayer.transform.position;
         }
 
-        if (playerDeltaPos.sqrMagnitude > 0) {
+        if (playerLastPos != currentPlayer.transform.position) {
             Current += BaseGrowth * Time.deltaTime;
         } else {
             Current -= BaseDecay * Time.deltaTime;
         }
         Current = Mathf.Clamp(Current, Min, Max);
-
         if (isActive) {
             OnActive();
             if (Current <= ReactionEndThreshold) {
@@ -54,5 +53,7 @@ public abstract class Attention : MonoBehaviour
                 OnStateSwitch(isActive);
             }
         }
+
+        playerLastPos = currentPlayer.transform.position;
     }
 }

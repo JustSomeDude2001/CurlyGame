@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BlindBehaviour : Attention
@@ -16,18 +17,23 @@ public class BlindBehaviour : Attention
 
     private Vector3 targetPos;
 
+    private void Start() {
+        targetPos = transform.position;
+    }
+
     protected override void OnActive()
     {
-        if (timer < StopTime) {
-            timer += Time.deltaTime;
-        } else {
-            Vector3 direction = (transform.position - playerLastPos).normalized;
-            transform.position += SpeedApproach * Time.deltaTime * direction;
-        }
+        Vector3 direction = (playerLastPos - transform.position).normalized;
+        transform.position += SpeedApproach * Time.deltaTime * direction;
     }
 
     protected override void OnIdle()
     {
+        if (timer < StopTime) {
+            timer += Time.deltaTime;
+            return;
+        }
+
         Vector3 distanceVector = targetPos - transform.position;
 
         if (distanceVector.sqrMagnitude < 0.01f) {
