@@ -5,55 +5,55 @@ using UnityEngine;
 
 public abstract class Attention : MonoBehaviour
 {
-    public float Current = 0f;
-    public float Min = 0f;
-    public float Max = 100f;
-    public float BaseGrowth = 5f;
-    public float BaseDecay = 5f;
+    public float current = 0f;
+    public float min = 0f;
+    public float max = 100f;
+    public float baseGrowth = 5f;
+    public float baseDecay = 5f;
 
-    public float ReactionStartThreshold = 20f;
-    public float ReactionEndThreshold = 10f;
+    public float reactionStartThreshold = 20f;
+    public float reactionEndThreshold = 10f;
     public bool isActive = false;
 
     protected abstract void OnActive();
     protected abstract void OnIdle();
     protected abstract void OnStateSwitch(bool nextState);
 
-    protected Player currentPlayer;
-    protected Vector3 playerLastPos;
+    protected Player _currentPlayer;
+    protected Vector3 _playerLastPos;
 
     private void Update() {
-        if (currentPlayer == null) {
-            currentPlayer = FindObjectOfType<Player>();
-            if (currentPlayer == null) {
+        if (_currentPlayer == null) {
+            _currentPlayer = FindObjectOfType<Player>();
+            if (_currentPlayer == null) {
                 Debug.Log("No player in scene");
             } else {
-                playerLastPos = currentPlayer.transform.position;
+                _playerLastPos = _currentPlayer.transform.position;
                 Debug.Log("Found Player on Scene");
             }
             return;
         }
 
-        if (playerLastPos != currentPlayer.transform.position) {
-            Current += BaseGrowth * Time.deltaTime;
+        if (_playerLastPos != _currentPlayer.transform.position) {
+            current += baseGrowth * Time.deltaTime;
         } else {
-            Current -= BaseDecay * Time.deltaTime;
+            current -= baseDecay * Time.deltaTime;
         }
-        Current = Mathf.Clamp(Current, Min, Max);
+        current = Mathf.Clamp(current, min, max);
         if (isActive) {
             OnActive();
-            if (Current <= ReactionEndThreshold) {
+            if (current <= reactionEndThreshold) {
                 isActive = false;
                 OnStateSwitch(isActive);
             }
         } else {
             OnIdle();
-            if (Current >= ReactionStartThreshold) {
+            if (current >= reactionStartThreshold) {
                 isActive = true;
                 OnStateSwitch(isActive);
             }
         }
 
-        playerLastPos = currentPlayer.transform.position;
+        _playerLastPos = _currentPlayer.transform.position;
     }
 }

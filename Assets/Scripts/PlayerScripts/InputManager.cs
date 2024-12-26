@@ -5,34 +5,34 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    private static InputManager instance;
-    private PCControl inputActions;
+    private static InputManager _instance;
+    private PCControl _inputActions;
 
     private void Awake() {
-        if (instance != null) {
+        if (_instance != null) {
             throw new Exception("Attempting to create a second input manager");   
         }
-        inputActions = new PCControl();
-        instance = this;
+        _inputActions = new PCControl();
+        _instance = this;
     }
 
     private void OnEnable() {
-        inputActions.Enable();
+        _inputActions.Enable();
     }
 
     private void OnDisable() {
-        inputActions.Disable();
+        _inputActions.Disable();
     }
 
     public static InputManager GetInstance() {
-        return instance;
+        return _instance;
     }
 
     public Vector2 GetPlayerMovement() {
-        return inputActions.FP.Move.ReadValue<Vector2>();
+        return _inputActions.FP.Move.ReadValue<Vector2>();
     }
     
     public Vector2 GetMouseDelta() {
-        return inputActions.FP.Look.ReadValue<Vector2>();
+        return _inputActions.FP.Look.ReadValue<Vector2>();
     }
 }

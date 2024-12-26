@@ -5,17 +5,17 @@ using Cinemachine;
 
 public class CinemachinePOVExtension : CinemachineExtension
 {
-    private InputManager inputManager;
-    private Vector3 startingRotation;
+    private InputManager _inputManager;
+    private Vector3 _startingRotation;
 
-    public float HorizontalSpeed = 10f;
-    public float VerticalSpeed = 10f;
-    public float ClampAngle = 80f;
+    public float horizontalSpeed = 10f;
+    public float verticalSpeed = 10f;
+    public float clampAngle = 80f;
 
     protected override void Awake()
     {
-        inputManager = InputManager.GetInstance();
-        startingRotation = transform.localRotation.eulerAngles;
+        _inputManager = InputManager.GetInstance();
+        _startingRotation = transform.localRotation.eulerAngles;
         base.Awake();
     }
 
@@ -23,13 +23,13 @@ public class CinemachinePOVExtension : CinemachineExtension
     {
         if (vcam.Follow) {
             if (stage == CinemachineCore.Stage.Aim) {
-                Vector2 deltaInput = inputManager.GetMouseDelta();
+                Vector2 deltaInput = _inputManager.GetMouseDelta();
 
-                startingRotation.x += deltaInput.x * Time.deltaTime * HorizontalSpeed;
-                startingRotation.y += deltaInput.y * Time.deltaTime * VerticalSpeed;
+                _startingRotation.x += deltaInput.x * Time.deltaTime * horizontalSpeed;
+                _startingRotation.y += deltaInput.y * Time.deltaTime * verticalSpeed;
                 
-                startingRotation.y = Mathf.Clamp(startingRotation.y, -ClampAngle, +ClampAngle);
-                state.RawOrientation = Quaternion.Euler(-startingRotation.y, startingRotation.x, 0f);
+                _startingRotation.y = Mathf.Clamp(_startingRotation.y, -clampAngle, +clampAngle);
+                state.RawOrientation = Quaternion.Euler(-_startingRotation.y, _startingRotation.x, 0f);
             }
 
         }
