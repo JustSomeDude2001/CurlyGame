@@ -13,7 +13,7 @@ public class LevelController : MonoBehaviour
         _instance = this;
     }
 
-    public LevelController GetInstance() {
+    public static LevelController GetInstance() {
         return _instance;
     }
 

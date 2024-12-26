@@ -23,6 +23,12 @@ public class CinemachinePOVExtension : CinemachineExtension
     {
         if (vcam.Follow) {
             if (stage == CinemachineCore.Stage.Aim) {
+                if (_inputManager == null) {
+                    _inputManager = InputManager.GetInstance();
+                    if (_inputManager == null) {
+                        return;
+                    }
+                }
                 Vector2 deltaInput = _inputManager.GetMouseDelta();
 
                 _startingRotation.x += deltaInput.x * Time.deltaTime * horizontalSpeed;

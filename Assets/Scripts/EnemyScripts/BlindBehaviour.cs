@@ -15,6 +15,8 @@ public class BlindBehaviour : Attention
     public float stopTime;
     private float _timer;
 
+    public float rotationSpeed = 45f;
+
     private Vector3 _targetPos;
 
     private void Start() {
@@ -25,6 +27,9 @@ public class BlindBehaviour : Attention
     {
         Vector3 direction = (_playerLastPos - transform.position).normalized;
         transform.position += speedApproach * Time.deltaTime * direction;
+
+        Vector3 newFacingDir = Vector3.RotateTowards(transform.forward, direction, rotationSpeed * Time.deltaTime, 0.0f);
+        transform.rotation = Quaternion.LookRotation(newFacingDir);
     }
 
     protected override void OnIdle()
@@ -46,6 +51,9 @@ public class BlindBehaviour : Attention
 
         Vector3 direction = (_targetPos - transform.position).normalized;
         transform.position += speedWander * Time.deltaTime * direction;
+
+        Vector3 newFacingDir = Vector3.RotateTowards(transform.forward, direction, rotationSpeed * Time.deltaTime, 0.0f);
+        transform.rotation = Quaternion.LookRotation(newFacingDir);
     }
 
     protected override void OnStateSwitch(bool nextState)
