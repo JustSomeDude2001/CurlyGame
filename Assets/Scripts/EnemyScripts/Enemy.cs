@@ -13,15 +13,19 @@ public class Enemy : MonoBehaviour
 
     public Action OnKill;
 
+    public bool killed = false;
+
     void Start() {
         _player = FindObjectOfType<Player>();
         _levelLoader = GetComponent<LevelLoader>();
     }
 
     void Update() {
+        if (killed) return;
         if ((_player.transform.position - transform.position).magnitude <= killDistance) {
             OnKill.Invoke();
             Cursor.visible = true;
+            killed = true;
         }
     }
 }

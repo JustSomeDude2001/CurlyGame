@@ -36,7 +36,7 @@ public class TriggersScreamer : MonoBehaviour
             audioSources[i].Play();
         }
         for (int i = 0; i < animators.Count; i++) {
-            animators[i].SetTrigger("Screamer");
+            animators[i].SetBool("Screamer", true);
         }
     }
 

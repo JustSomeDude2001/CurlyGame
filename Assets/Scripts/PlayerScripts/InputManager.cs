@@ -66,7 +66,11 @@ public class InputManager : MonoBehaviour
         Interactive comp = result.GetComponent<Interactive>();
         if (comp != null) {
             if (comp.CanInteract()) {
-                comp.OnInteract.Invoke();
+                if (comp.OnInteract != null)
+                    comp.OnInteract.Invoke();
+            } else {
+                if (comp.OnFailInteract != null)
+                    comp.OnFailInteract.Invoke();
             }
         }
     }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7080758908591086054}
   - component: {fileID: 3838714608759435620}
   m_Layer: 0
-  m_Name: DoorsDemo
+  m_Name: Level 1 Introduction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

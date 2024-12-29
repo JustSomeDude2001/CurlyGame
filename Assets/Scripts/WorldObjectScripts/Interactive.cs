@@ -6,6 +6,7 @@ using UnityEngine;
 public class Interactive : MonoBehaviour
 {
     public Action OnInteract;
+    public Action OnFailInteract;
     public List<Item> requiredItems = new List<Item>();
     private int _collectedRequiredItems = 0;
 

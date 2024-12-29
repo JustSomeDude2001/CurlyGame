@@ -6,7 +6,7 @@ public class LevelController : MonoBehaviour
 {
     private static LevelController _instance;
     public List<GameObject> levels;
-    private int _currentLevelIndex;
+    public int currentLevelIndex;
 
     void Start()
     {
@@ -23,7 +23,7 @@ public class LevelController : MonoBehaviour
             Destroy(currentLevel);
         }
         Instantiate(levels[index], Vector3.zero, Quaternion.identity);
-        _currentLevelIndex = index;
+        currentLevelIndex = index;
     }
 
     IEnumerator NextLevelCoroutine(float timer, int nextLevelIndex) {
@@ -54,12 +54,12 @@ public class LevelController : MonoBehaviour
 
     public void RestartLevel(float timer) {
         StartCoroutine(LossSequence(timer));
-        StartCoroutine(NextLevelCoroutine(timer, _currentLevelIndex));
+        StartCoroutine(NextLevelCoroutine(timer, currentLevelIndex));
     }
 
     public void LoadNextLevel(float timer) {
         StartCoroutine(WinSequence(timer));
-        StartCoroutine(NextLevelCoroutine(timer, _currentLevelIndex + 1));
+        StartCoroutine(NextLevelCoroutine(timer, currentLevelIndex + 1));
     }
 
     public void LoadSpecificLevel(int targetLevel) {
