@@ -29,7 +29,10 @@ public class BlindBehaviour : Attention
         transform.position += speedApproach * Time.deltaTime * direction;
 
         Vector3 newFacingDir = Vector3.RotateTowards(transform.forward, direction, rotationSpeed * Time.deltaTime, 0.0f);
-        transform.rotation = Quaternion.LookRotation(newFacingDir);
+        Quaternion result = Quaternion.LookRotation(newFacingDir);
+        result.z = 0;
+        result.x = 0;
+        transform.rotation = result;
     }
 
     protected override void OnIdle()
@@ -53,7 +56,10 @@ public class BlindBehaviour : Attention
         transform.position += speedWander * Time.deltaTime * direction;
 
         Vector3 newFacingDir = Vector3.RotateTowards(transform.forward, direction, rotationSpeed * Time.deltaTime, 0.0f);
-        transform.rotation = Quaternion.LookRotation(newFacingDir);
+        Quaternion result = Quaternion.LookRotation(newFacingDir);
+        result.z = 0;
+        result.x = 0;
+        transform.rotation = result;
     }
 
     protected override void OnStateSwitch(bool nextState)

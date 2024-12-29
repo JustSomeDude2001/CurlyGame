@@ -12,9 +12,6 @@ public class InputManager : MonoBehaviour
 
 
     private void Awake() {
-        if (_instance != null) {
-            throw new Exception("Attempting to create a second input manager");   
-        }
         _inputActions = new PCControl();
         _instance = this;
     }

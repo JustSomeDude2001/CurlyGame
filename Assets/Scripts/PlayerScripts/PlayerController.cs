@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
+    public Action OnMove;
+
     private CharacterController _controller;
     private InputManager _inputManager;
     private Vector3 _playerVelocity;
@@ -12,12 +15,10 @@ public class PlayerController : MonoBehaviour
 
     public float playerSpeed = 2.0f;
     public float gravityValue = -9.81f;
-    private Transform _cameraTransform;
 
     void Start() {
         _inputManager = InputManager.GetInstance();
         _controller = GetComponent<CharacterController>();
-        _cameraTransform = Camera.main.transform;
     }
 
     void Update()
@@ -30,8 +31,12 @@ public class PlayerController : MonoBehaviour
 
         Vector2 movement = _inputManager.GetPlayerMovement();
         Vector3 move = new Vector3(movement.x, 0f, movement.y);
-        move = _cameraTransform.forward * move.z + _cameraTransform.right * move.x;
+        move = Camera.main.transform.forward * move.z + Camera.main.transform.right * move.x;
         move.y = 0f;
+
+        if (move.magnitude > 0) {
+            OnMove.Invoke();
+        }
 
         _controller.Move(move * Time.deltaTime * playerSpeed);
 

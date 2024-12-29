@@ -20,8 +20,8 @@ public class Enemy : MonoBehaviour
 
     void Update() {
         if ((_player.transform.position - transform.position).magnitude <= killDistance) {
-            _levelLoader.LoadLevel(onKillLevel);
             OnKill.Invoke();
+            Cursor.visible = true;
         }
     }
 }
