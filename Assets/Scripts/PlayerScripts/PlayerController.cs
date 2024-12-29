@@ -35,7 +35,8 @@ public class PlayerController : MonoBehaviour
         move.y = 0f;
 
         if (move.magnitude > 0) {
-            OnMove.Invoke();
+            if (OnMove != null)
+                OnMove.Invoke();
         }
 
         _controller.Move(move * Time.deltaTime * playerSpeed);
