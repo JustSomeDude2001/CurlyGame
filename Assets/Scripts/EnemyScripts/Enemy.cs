@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
         if ((_player.transform.position - transform.position).magnitude <= killDistance) {
             OnKill.Invoke();
             Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             killed = true;
         }
     }

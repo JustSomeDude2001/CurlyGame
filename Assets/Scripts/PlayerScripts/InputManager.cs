@@ -18,11 +18,13 @@ public class InputManager : MonoBehaviour
 
     private void OnEnable() {
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         _inputActions.Enable();
     }
 
     private void OnDisable() {
         Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         _inputActions.Disable();
     }
 
@@ -80,6 +82,21 @@ public class InputManager : MonoBehaviour
             _inputActions.FP.Interact.performed += Interact;
         } else {
             _inputActions.FP.Interact.performed -= Interact;
+        }
+    }
+
+    void Update() {
+        GameObject target = TryGetRaycastItem();
+        if(target == null) {
+            return;
+        }
+        Interactive interactive = target.GetComponent<Interactive>();
+        if (interactive.CanInteract()) {
+            if (interactive.OnCanInteract != null)
+                interactive.OnCanInteract.Invoke();
+        } else {
+            if (interactive.OnCannotInteract != null)
+                interactive.OnCannotInteract.Invoke();
         }
     }
 }

@@ -902,5 +902,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 331af2731df4eaa41833b5071287ceeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDisInteraction: 5
+  maxDisInteraction: 2.2
   inventory: []

@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 8873278596767533181}
   - component: {fileID: 3309702716622374020}
   - component: {fileID: 7472593325889222875}
+  - component: {fileID: 3964334689833302368}
   m_Layer: 0
   m_Name: CurlyBlind
   m_TagString: Untagged
@@ -322,6 +323,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3964334689833302368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219077593413401159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f90838b76cbbf4382d6577b5270a5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObjects:
+  - {fileID: 0}
+  targetStates: 01
+  delay: 2
 --- !u!1 &5153642876335655644
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,7 +941,8 @@ PrefabInstance:
       value: 126.85409
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5363331673300365573, guid: 4b74630105356924cb6e2b199224bf09, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -7816110453866635364, guid: 4b74630105356924cb6e2b199224bf09,
         type: 3}

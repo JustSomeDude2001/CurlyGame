@@ -23,6 +23,7 @@ public abstract class Attention : MonoBehaviour
     protected Vector3 _playerLastPos;
 
     private void Update() {
+        Debug.Log(current);
         if (_currentPlayer == null) {
             _currentPlayer = FindObjectOfType<Player>();
             if (_currentPlayer == null) {
