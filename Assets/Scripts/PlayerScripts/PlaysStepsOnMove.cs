@@ -10,7 +10,7 @@ public class PlaysStepsOnMove : MonoBehaviour
 
     private void TryPlayStep() {
         if(!audioSource.isPlaying) {
-            audioSource.clip = clips[(int)(Random.Range(0, clips.Count - 1))];
+            audioSource.clip = clips[Random.Range(0, clips.Count - 1)];
             audioSource.Play();
         }
     }
