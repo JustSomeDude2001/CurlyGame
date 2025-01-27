@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 3309702716622374020}
   - component: {fileID: 7472593325889222875}
   - component: {fileID: 3964334689833302368}
+  - component: {fileID: 1061067758473068461}
   m_Layer: 0
   m_Name: CurlyBlind
   m_TagString: Untagged
@@ -339,6 +340,21 @@ MonoBehaviour:
   - {fileID: 0}
   targetStates: 01
   delay: 2
+--- !u!114 &1061067758473068461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219077593413401159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4661c735a07ca104e92875de41c03e33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: bd2efe54ddebe4d479ca54305264404b, type: 2}
+  maxIntensity: 0.4
+  effectStartRadius: 18
 --- !u!1 &5153642876335655644
 GameObject:
   m_ObjectHideFlags: 0
