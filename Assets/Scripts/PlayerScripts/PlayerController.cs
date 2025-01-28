@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
                 OnMove.Invoke();
         }
 
+        move.Normalize();
+
         _controller.Move(move * Time.deltaTime * playerSpeed);
 
         _playerVelocity.y += gravityValue * Time.deltaTime;

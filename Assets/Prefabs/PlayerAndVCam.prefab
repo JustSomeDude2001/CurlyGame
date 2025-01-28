@@ -116,6 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 831a83d66ccf21f4fa6d149b3894c65a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  yRotation: -41.4848
+  xRotation: -42.03918
   horizontalSpeed: 10
   verticalSpeed: 10
   clampAngle: 80
@@ -130,7 +132,6 @@ GameObject:
   - component: {fileID: 2738875030209121453}
   - component: {fileID: 4135884919957743901}
   - component: {fileID: 3186679213918763972}
-  - component: {fileID: 1139694685443185335}
   - component: {fileID: 3191221370508077101}
   - component: {fileID: 6914708995277193999}
   - component: {fileID: 8990328615278040779}
@@ -209,29 +210,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &1139694685443185335
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1980944778368630498}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3191221370508077101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,9 +244,9 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 2
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.1
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
