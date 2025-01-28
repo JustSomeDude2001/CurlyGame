@@ -62,6 +62,15 @@ public partial class @PCControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""006dce39-4c93-48f6-9d10-d03dae2dfca1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -152,6 +161,17 @@ public partial class @PCControl: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9dc645f6-ba49-4650-8324-32820cf1591c"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -164,6 +184,7 @@ public partial class @PCControl: IInputActionCollection2, IDisposable
         m_FP_Interact = m_FP.FindAction("Interact", throwIfNotFound: true);
         m_FP_Look = m_FP.FindAction("Look", throwIfNotFound: true);
         m_FP_Move = m_FP.FindAction("Move", throwIfNotFound: true);
+        m_FP_Sprint = m_FP.FindAction("Sprint", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -229,6 +250,7 @@ public partial class @PCControl: IInputActionCollection2, IDisposable
     private readonly InputAction m_FP_Interact;
     private readonly InputAction m_FP_Look;
     private readonly InputAction m_FP_Move;
+    private readonly InputAction m_FP_Sprint;
     public struct FPActions
     {
         private @PCControl m_Wrapper;
@@ -237,6 +259,7 @@ public partial class @PCControl: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_FP_Interact;
         public InputAction @Look => m_Wrapper.m_FP_Look;
         public InputAction @Move => m_Wrapper.m_FP_Move;
+        public InputAction @Sprint => m_Wrapper.m_FP_Sprint;
         public InputActionMap Get() { return m_Wrapper.m_FP; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -258,6 +281,9 @@ public partial class @PCControl: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @Sprint.started += instance.OnSprint;
+            @Sprint.performed += instance.OnSprint;
+            @Sprint.canceled += instance.OnSprint;
         }
 
         private void UnregisterCallbacks(IFPActions instance)
@@ -274,6 +300,9 @@ public partial class @PCControl: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @Sprint.started -= instance.OnSprint;
+            @Sprint.performed -= instance.OnSprint;
+            @Sprint.canceled -= instance.OnSprint;
         }
 
         public void RemoveCallbacks(IFPActions instance)
@@ -297,5 +326,6 @@ public partial class @PCControl: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
     }
 }

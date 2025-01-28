@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public float playerSpeed = 2.0f;
     public float gravityValue = -9.81f;
 
+    public float sprintingSpeed = 4.0f;
+
     void Start() {
         _inputManager = InputManager.GetInstance();
         _controller = GetComponent<CharacterController>();
@@ -41,7 +43,12 @@ public class PlayerController : MonoBehaviour
 
         move.Normalize();
 
-        _controller.Move(move * Time.deltaTime * playerSpeed);
+        float targetSpeed = playerSpeed;
+        if (_inputManager.GetSprintingState()) {
+            targetSpeed = sprintingSpeed;
+        }
+
+        _controller.Move(move * Time.deltaTime * targetSpeed);
 
         _playerVelocity.y += gravityValue * Time.deltaTime;
         _controller.Move(_playerVelocity * Time.deltaTime);

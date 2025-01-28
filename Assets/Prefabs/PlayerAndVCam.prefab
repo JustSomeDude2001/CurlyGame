@@ -224,6 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 2
   gravityValue: -9.81
+  sprintingSpeed: 4
 --- !u!143 &6914708995277193999
 CharacterController:
   m_ObjectHideFlags: 0
@@ -246,7 +247,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.2
   m_SlopeLimit: 45
-  m_StepOffset: 0.1
+  m_StepOffset: 0.25
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}

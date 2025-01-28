@@ -40,6 +40,10 @@ public class InputManager : MonoBehaviour
         return _inputActions.FP.Look.ReadValue<Vector2>();
     }
 
+    public bool GetSprintingState() {
+        return _inputActions.FP.Sprint.IsPressed();
+    }
+
     public GameObject TryGetRaycastItem() {
         if (_player == null) {
             _player = FindObjectOfType<Player>();
@@ -85,7 +89,7 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    void Update() {
+    private void TrackInteractiveItem() {
         GameObject target = TryGetRaycastItem();
         if(target == null) {
             return;
@@ -98,5 +102,9 @@ public class InputManager : MonoBehaviour
             if (interactive.OnCannotInteract != null)
                 interactive.OnCannotInteract.Invoke();
         }
+    }
+
+    void Update() {
+        TrackInteractiveItem();
     }
 }
