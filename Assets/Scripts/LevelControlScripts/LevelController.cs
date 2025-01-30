@@ -6,7 +6,9 @@ public class LevelController : MonoBehaviour
 {
     private static LevelController _instance;
     public List<GameObject> levels;
+    public List<GameObject> cutscenes;
     public int currentLevelIndex;
+    public int currentCutsceneIndex;
 
     void Start()
     {
@@ -18,52 +20,30 @@ public class LevelController : MonoBehaviour
     }
 
     private void LoadLevel(int index) {
-        GameObject currentLevel = FindObjectOfType<Level>().gameObject;
-        if (currentLevel != null) {
-            Destroy(currentLevel);
+        GameObject oldLevel = FindObjectOfType<Level>().gameObject;
+        if (oldLevel != null) {
+            Destroy(oldLevel);
         }
         Instantiate(levels[index], Vector3.zero, Quaternion.identity);
         currentLevelIndex = index;
     }
 
-    IEnumerator NextLevelCoroutine(float timer, int nextLevelIndex) {
-        while (timer > 0) {
-            timer -= Time.deltaTime;
-            yield return null;
+    private void LoadCutscene(int index) {
+        Cutscene oldCutscene = FindObjectOfType<Cutscene>();
+        if (oldCutscene != null) {
+            Destroy(oldCutscene.gameObject);
         }
-        LoadLevel(nextLevelIndex);
+        if (cutscenes[index] != null) {
+            GameObject newCutscene = Instantiate(cutscenes[index], Vector3.zero, Quaternion.identity);
+            if (newCutscene.TryGetComponent<Cutscene>(out Cutscene cutsceneComponent)) {
+                cutsceneComponent.Play();
+            }
+        }
+        currentCutsceneIndex = index;
     }
 
-    IEnumerator LossSequence(float timer) {
-        //TODO
-        Debug.Log("You lost");
-        yield return null;   
-    }
-    
-    IEnumerator WinSequence(float timer) {
-        //TODO
-        Debug.Log("You won");
-        yield return null;
-    }
-
-    IEnumerator TransitionSequence(float timer) {
-        //TODO
-        Debug.Log("Loading specific level");
-        yield return null;
-    }
-
-    public void RestartLevel(float timer) {
-        StartCoroutine(LossSequence(timer));
-        StartCoroutine(NextLevelCoroutine(timer, currentLevelIndex));
-    }
-
-    public void LoadNextLevel(float timer) {
-        StartCoroutine(WinSequence(timer));
-        StartCoroutine(NextLevelCoroutine(timer, currentLevelIndex + 1));
-    }
-
-    public void LoadSpecificLevel(int targetLevel) {
-        StartCoroutine(TransitionSequence(0.3f));
-        StartCoroutine(NextLevelCoroutine(0.3f, targetLevel));
+    public void StartLevel(int index) {
+        LoadLevel(index);
+        LoadCutscene(index);
     }
 }

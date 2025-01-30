@@ -5,11 +5,11 @@ using UnityEngine;
 public class LevelLoader : MonoBehaviour
 {
     public void LoadLevel(int target) {
-        LevelController.GetInstance().LoadSpecificLevel(target);
+        LevelController.GetInstance().StartLevel(target);
     }
 
     public void RestartLevel() {
         LevelController instance = LevelController.GetInstance();
-        instance.LoadSpecificLevel(instance.currentLevelIndex);
+        instance.StartLevel(instance.currentLevelIndex);
     }
 }

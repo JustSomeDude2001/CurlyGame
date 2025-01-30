@@ -14,8 +14,11 @@ public class Player : MonoBehaviour
         Debug.Log("Added to inventory at " + transform.name);
     }
 
-    private void Start() {
+    private void Awake() {
         _instance = this;
+    }
+
+    private void Start() {
         InputManager.GetInstance().ToggleInteractions(true);
     }
 
@@ -25,5 +28,9 @@ public class Player : MonoBehaviour
 
     public static Player GetInstance() {
         return _instance;
+    }
+
+    public static void ToggleControls(bool targetState) {
+        GetInstance().gameObject.SetActive(targetState);
     }
 }

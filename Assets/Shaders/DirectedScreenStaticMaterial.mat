@@ -49,6 +49,6 @@ Material:
     - _Intensity: 0.01
     - _Proximity: 1.87
     m_Colors:
-    - _Direction: {r: -0.24207261, g: -0.07166198, b: 0, a: 0}
+    - _Direction: {r: -0.08000496, g: -0.77130085, b: 0, a: 0}
     - _Shape: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

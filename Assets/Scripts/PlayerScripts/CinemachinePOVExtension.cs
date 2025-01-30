@@ -53,7 +53,6 @@ public class CinemachinePOVExtension : CinemachineExtension
                 xRotation = _currentRotation.x;
                 yRotation = _currentRotation.y;
             }
-
         }
     }
 }
