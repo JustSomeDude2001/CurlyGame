@@ -10,8 +10,10 @@ public class Cutscene : MonoBehaviour
 
     public void Play() {
         SuspendControls(duration);
-        if (OnPlay != null)
+        if (OnPlay != null) {
+            Debug.Log("Starting On Play actions");
             OnPlay.Invoke();
+        }
     }
 
     IEnumerator UnsuspendControls(float duration) {

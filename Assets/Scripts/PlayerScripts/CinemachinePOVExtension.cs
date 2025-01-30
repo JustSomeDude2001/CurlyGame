@@ -34,6 +34,7 @@ public class CinemachinePOVExtension : CinemachineExtension
                         return;
                     }
                 }
+
                 _currentRotation.y = yRotation;
                 _currentRotation.x = xRotation;
 
@@ -41,17 +42,19 @@ public class CinemachinePOVExtension : CinemachineExtension
 
                 _currentRotation.x += deltaInput.x * Time.deltaTime * horizontalSpeed;
                 _currentRotation.y += deltaInput.y * Time.deltaTime * verticalSpeed;
-                
+
                 _currentRotation.y = Mathf.Clamp(_currentRotation.y, -clampAngle, +clampAngle);
-                state.RawOrientation = Quaternion.Euler(-_currentRotation.y, _currentRotation.x, 0f);
+
+                xRotation = _currentRotation.x;
+                yRotation = _currentRotation.y;     
+
                 if (_isFirstProcessedFrame) {
                     _isFirstProcessedFrame = false;
                     Debug.Log("First frame state: " + state.RawOrientation.eulerAngles);
                     Debug.Log("First frame target state:" + _currentRotation);
                 }
 
-                xRotation = _currentRotation.x;
-                yRotation = _currentRotation.y;
+                state.RawOrientation = Quaternion.Euler(-_currentRotation.y, _currentRotation.x, 0f);
             }
         }
     }

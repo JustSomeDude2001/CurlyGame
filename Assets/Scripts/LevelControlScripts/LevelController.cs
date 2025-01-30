@@ -28,6 +28,14 @@ public class LevelController : MonoBehaviour
         currentLevelIndex = index;
     }
 
+    IEnumerator PlayCutsceneWithDelay(int numUpdates, Cutscene cutscene) {
+        while(numUpdates > 0) {
+            numUpdates--;
+            yield return null;
+        }
+        cutscene.Play();
+    }
+
     private void LoadCutscene(int index) {
         Cutscene oldCutscene = FindObjectOfType<Cutscene>();
         if (oldCutscene != null) {
@@ -36,7 +44,7 @@ public class LevelController : MonoBehaviour
         if (cutscenes[index] != null) {
             GameObject newCutscene = Instantiate(cutscenes[index], Vector3.zero, Quaternion.identity);
             if (newCutscene.TryGetComponent<Cutscene>(out Cutscene cutsceneComponent)) {
-                cutsceneComponent.Play();
+                StartCoroutine(PlayCutsceneWithDelay(3, cutsceneComponent));
             }
         }
         currentCutsceneIndex = index;

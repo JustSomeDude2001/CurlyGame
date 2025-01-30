@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DirectedScreenStaticMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: a8115d9fa51e295449277809b0ac0f2d,
+  m_Name: ScreenBurnMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: fe7c76f8828c14e4db6452f89892a567,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -46,9 +46,7 @@ Material:
     - _Fullscreen_DstColorBlend: 10
     - _Fullscreen_SrcAlphaBlend: 1
     - _Fullscreen_SrcColorBlend: 5
-    - _Intensity: 0.01
-    - _Proximity: 1.87
-    m_Colors:
-    - _Direction: {r: -0.837114, g: -0.8692616, b: 0, a: 0}
-    - _Shape: {r: 0.2, g: 0.2, b: 0, a: 0}
+    - _Intensity: 0.84
+    - _Visibility: 1
+    m_Colors: []
   m_BuildTextureStacks: []

@@ -351,13 +351,13 @@ MonoBehaviour:
   - {fileID: 2123723494227640813, guid: 32d50a125f7b4174880106aa7cbf6327, type: 3}
   - {fileID: 6216241606297081035, guid: 1f106cbfc2948e04c832849de4a57fe1, type: 3}
   cutscenes:
-  - {fileID: 0}
+  - {fileID: 775056738206746492, guid: 9a71696c28240d74e96706621948d9e7, type: 3}
   - {fileID: 775056738206746492, guid: 08a03404fb29fdf479417c6bfdc70470, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 775056738206746492, guid: cd54a0b8e4eb4044597f48e158832412, type: 3}
+  - {fileID: 775056738206746492, guid: b2ba69e135bfec14089a7dd9f6013005, type: 3}
+  - {fileID: 775056738206746492, guid: e643000240e934245805a38fba2346cb, type: 3}
+  - {fileID: 775056738206746492, guid: 56aa80d5660004d4eab566ef3b5f3992, type: 3}
+  - {fileID: 775056738206746492, guid: 64a7095306f44ce4bb2dfa9887a588c3, type: 3}
   currentLevelIndex: 0
   currentCutsceneIndex: 0
 --- !u!1 &1746216249

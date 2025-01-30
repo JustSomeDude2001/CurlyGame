@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4079708068596616415}
   - component: {fileID: 5610177859096941008}
   m_Layer: 0
-  m_Name: Cutscene 1
+  m_Name: Cutscene 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0413\u0414\u0415 \u0413\u041B\u0410\u0417?!"
+  m_text: "\u041E\u041D \u041D\u0415 \u0421\u041F\u0420\u042F\u0427\u0415\u0422 \u0415\u0413\u041E"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f90c00a030034ac4da8fa210f8acb0f8, type: 2}
   m_sharedMaterial: {fileID: -8801898052651690282, guid: f90c00a030034ac4da8fa210f8acb0f8,

@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     }
 
     public static void ToggleControls(bool targetState) {
-        GetInstance().gameObject.SetActive(targetState);
+        if (GetInstance() != null)
+            GetInstance().gameObject.SetActive(targetState);
     }
 }

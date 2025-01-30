@@ -15,6 +15,7 @@ public class PlayerVCam : MonoBehaviour
     }
 
     public static void ToggleControls(bool state) {
-        GetInstance().gameObject.SetActive(state);
+        if (GetInstance() != null)
+            GetInstance().gameObject.SetActive(state);
     } 
 }
